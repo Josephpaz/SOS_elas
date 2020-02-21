@@ -1,5 +1,7 @@
 {
   "name": "sosElas",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
