@@ -30,9 +30,7 @@ export class Tab1Page {
   }
 
   sendSMS(contact: Contact) {
-    this.sms.send(contact.phoneNumbers[0].value, 'Essa é minha mensagem para você').then(val => {
-      alert('It works!');
-    });
+    this.sms.send(contact.phoneNumbers[0].value, 'Essa é minha mensagem para você');
   }
 
   call(contact: Contact) {
@@ -42,8 +40,8 @@ export class Tab1Page {
   createContact() {
     let contact: Contact = this.contacts.create();
 
-    contact.name = new ContactName(null, 'Gustavo', 'Silva');
-    contact.phoneNumbers = [new ContactField('mobile', '994355436')];
+    contact.name = new ContactName(null, 'Militar', 'Policia');
+    contact.phoneNumbers = [new ContactField('mobile', '190')];
     contact.save().then(
       async () => {
         let toast = await this.toastCtrl.create({
