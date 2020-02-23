@@ -5,8 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
-import { SMS } from '@ionic-native/sms/ngx';
+
 
 @NgModule({
   imports: [

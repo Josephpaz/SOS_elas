@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { SMS } from '@ionic-native/sms/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Contacts, SMS
+    Contacts, SMS, CallNumber
   ],
   bootstrap: [AppComponent]
 })
