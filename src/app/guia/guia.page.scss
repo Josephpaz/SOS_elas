@@ -1,0 +1,27 @@
+ion-slides {
+    height: 100vh !important;
+    color: white ;
+    background-color: deepskyblue;
+    ion-slide{
+        flex-direction: column;
+        justify-items: center;
+        align-items: flex-start;
+        text-align: justify;
+    
+    }
+    
+}
+ion-slide >:first-child {
+    width: 100%;
+}
+
+ion-img {
+    max-width: 50vw;
+    max-height: 50vh;
+    overflow: hidden;
+}
+
+p{
+    padding: 1em;
+}
+
