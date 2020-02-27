@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ModalController } from '@ionic/angular';
+import { ModalSMSComponent } from '../modal-sms/modal-sms.component';
 
 
 @Component({
@@ -13,7 +14,7 @@ import { ToastController } from '@ionic/angular';
 export class Tab1Page {
   myContacts: Contact[] = [];
 
-  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController) {}
+  constructor(private contacts: Contacts, private callNumber: CallNumber, private sms: SMS, private toastCtrl: ToastController, private modalCtrl: ModalController) {}
 
   loadContacts() {
 
@@ -53,4 +54,12 @@ export class Tab1Page {
     );
   }
 
+  //******************** PARTE DO MODAL ***************/
+  async showModal(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  
 }

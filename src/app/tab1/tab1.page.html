@@ -1,13 +1,13 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
+  <ion-toolbar class="toolbar">
     <ion-title>
-      Contatos
+      Contatos de emergência
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-button (click)="loadContacts()" expand="full">Carregar Contatos</ion-button>
+  <ion-button class = "botaoContatos" (click)="loadContacts()" expand="block">Adicionar contatos</ion-button>
   <ion-list>
     <ion-item-sliding *ngFor="let c of myContacts">
       <ion-item>
@@ -27,4 +27,10 @@
 
     </ion-item-sliding>
   </ion-list>
+
+  <div class="ion-padding">
+    <ion-button expand="block" (click)="showModal()"> SMS</ion-button>
+  </div>
 </ion-content>
+
+
