@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Camera
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" onload="startCamera()">
+
+  <div *ngIf = "picture" > <!--não necessário no código, ele só mostra a foto tirada -->
+    <img [src] = "picture">
+    <ion-fab bottom center>
+      <button ion-fab (click) = "startCamera()">
+        <ion-icon name ="add-outline"></ion-icon>
+      </button>
+    </ion-fab>
+  </div>
+
+  <button ion-fab (click) = "switchCamera()"> <!-- Muda de câmera frontal/traseira -->
+    <ion-icon name="camera-reverse-outline"></ion-icon> 
+  </button>
+
+  <button ion-fab (click) = "startCamera();takePicture()"> <!-- Tira a foto-->
+    <ion-icon name = "camera-outline"></ion-icon>
+  </button>
+
+
+</ion-content>
