@@ -6,10 +6,20 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreeny]="true">
-  <ion-button expand="block" > Violência Contra a Mulher</ion-button>
-  <ion-button expand="block" > Lei Maria da Penha</ion-button>
-  <ion-button expand="block" > Lei do 'Feminicídio'</ion-button>
-  <ion-button expand="block" > Lei da 'Importunação Sexual'</ion-button>
-  <ion-button expand="block" > Quebre o Silêncio e Procure Ajuda</ion-button>
+<ion-content [fullscreen]="true">
+  <section class="sec1">
+    <ion-button (click) = "showModal1()" id="s1"> Violência Contra a Mulher</ion-button>
+  </section>
+  <section class="sec4">
+    <ion-button (click) = "showModal4()" id="s2"> Lei da 'Importunação Sexual'</ion-button>
+  </section>
+  <section class="sec2">
+    <ion-button (click) = "showModal2()" id="s3"> Lei Maria da Penha</ion-button>
+  </section>
+  <section class="sec3">
+    <ion-button (click) = "showModal3()" id="s4"> Lei do 'Feminicídio'</ion-button>
+  </section>
+  <section class="sec5">
+    <ion-button (click) = "showModal5()" id="s5"> Quebre o Silêncio e Procure Ajuda</ion-button>
+  </section>
 </ion-content>
