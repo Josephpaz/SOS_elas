@@ -1,17 +1,31 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+<!--Mesmo código que página guia, sem o botão no último slide. Scss igual.-->
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide id="slide01">
+    <ion-row  class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia1.svg'>
+      </ion-img><p>1. Cadastre seus contatos de confiança</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
+  </ion-slide>
+  <ion-slide id="slide02">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia2.svg'></ion-img>
+      <p>2. Em situações de perigo, pressione o botão de volume por 2 segundos</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
+    
+  </ion-slide>
+  <ion-slide id="slide03">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia3.svg'></ion-img>
+      <p>3. Uma mensagem de emergência e um breve vídeo serão enviados</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
+  </ion-slide>
+  <ion-slide id="slide04">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia4.svg'></ion-img>
+      <p>4. Em caso de perigo extremo, agite o celular para ligar para polícia</p>
+    </ion-row>
+  </ion-slide>
+</ion-slides>

@@ -1,18 +1,31 @@
 <ion-slides pager="true" [options]="slideOpts">
-  <ion-slide>
-    <h1>Cadastre seus contatos</h1>
-    <ion-img src=''></ion-img>
+  <ion-slide id="slide01">
+    <ion-row  class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia1.svg'>
+      </ion-img><p>1. Cadastre seus contatos de confiança</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
   </ion-slide>
-  <ion-slide>
-    <ion-img src='../assets/guia/volume.png'></ion-img>
-    <h1>Slide 2</h1>
+  <ion-slide id="slide02">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia2.svg'></ion-img>
+      <p>2. Em situações de perigo, pressione o botão de volume por 2 segundos</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
+    
   </ion-slide>
-  <ion-slide>
-    <ion-img src='../assets/guia/mensagem.png'></ion-img>
-    <h1>Slide 3</h1>
+  <ion-slide id="slide03">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia3.svg'></ion-img>
+      <p>3. Uma mensagem de emergência e um breve vídeo serão enviados</p>
+      <ion-img src='../assets/guia/swipe.svg'></ion-img>
+    </ion-row>
   </ion-slide>
-  <ion-slide>
-    <ion-img src='../assets/guia/Thumb_Up.png'></ion-img>
-    <h1>Slide 4</h1>
+  <ion-slide id="slide04">
+    <ion-row class="ion-justify-content-center textoGuia">
+      <ion-img src='../assets/guia/guia4.svg'></ion-img>
+      <p>4. Em caso de perigo extremo, agite o celular para ligar para polícia</p>
+      <ion-button (click)="finish()">Continuar</ion-button>
+    </ion-row>
   </ion-slide>
 </ion-slides>

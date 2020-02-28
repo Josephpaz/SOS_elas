@@ -15,6 +15,7 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 
 import {IonicStorageModule} from '@ionic/storage';
 
+//Importei IonicStorageModule.forRoot()
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],

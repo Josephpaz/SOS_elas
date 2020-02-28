@@ -1,27 +1,33 @@
 ion-slides {
     height: 100vh !important;
-    color: white ;
-    background-color: deepskyblue;
-    ion-slide{
-        flex-direction: column;
-        justify-items: center;
-        align-items: flex-start;
-        text-align: justify;
+    width: 100vw;
     
-    }
     
 }
-ion-slide >:first-child {
-    width: 100%;
-}
 
-ion-img {
-    max-width: 50vw;
-    max-height: 50vh;
-    overflow: hidden;
-}
-
-p{
+.textoGuia{
+    font-family: Averia Serif Libre;
+    font-style: bold;
+    font-size: 24px;
+    color: aliceblue;
+    margin-top: 250;
     padding: 1em;
+
+
 }
 
+#slide01{
+    background-color: #F47464;
+}
+
+#slide02{
+    background-color:#BE59E1;
+}
+
+#slide03{
+    background-color:#F47464;
+}
+
+#slide04{
+    background-color: #BE59E1;
+}

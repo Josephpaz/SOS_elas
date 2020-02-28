@@ -1,3 +1,35 @@
-ion-content ion-toolbar {
-  --background: translucent;
+
+
+ion-slides {
+  height: 100vh !important;
+  width: 100vw;
+  
+  
+}
+
+.textoGuia{
+  font-family: Averia Serif Libre;
+  font-style: bold;
+  font-size: 24px;
+  color: aliceblue;
+  margin-top: 250;
+  padding: 1em;
+
+
+}
+
+#slide01{
+  background-color: #F47464;
+}
+
+#slide02{
+  background-color:#BE59E1;
+}
+
+#slide03{
+  background-color:#F47464;
+}
+
+#slide04{
+  background-color: #BE59E1;
 }
