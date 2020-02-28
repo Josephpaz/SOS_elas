@@ -2,32 +2,40 @@ ion-slides {
     height: 100vh !important;
     width: 100vw;
     
-    
-}
-
-.textoGuia{
+  }
+  
+  .tituloGuia{
+    font-family: Averia Serif Libre;
+    font-style: bold italic;
+    font-size: 27px;
+    color: white;
+    padding: 1em;
+  }
+  
+  .textoGuia{
     font-family: Averia Serif Libre;
     font-style: bold;
     font-size: 24px;
-    color: aliceblue;
+    color:white;
     margin-top: 250;
     padding: 1em;
-
-
-}
-
-#slide01{
+  
+  
+  }
+  
+  #slide01{
     background-color: #F47464;
-}
-
-#slide02{
+  }
+  
+  #slide02{
     background-color:#BE59E1;
-}
-
-#slide03{
+  }
+  
+  #slide03{
     background-color:#F47464;
-}
-
-#slide04{
+  }
+  
+  #slide04{
     background-color: #BE59E1;
-}
+  }
+  
