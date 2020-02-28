@@ -9,4 +9,39 @@ export class Tab3Page {
 
   constructor() {}
 
+  /*async showModal1(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  */
+ /*async showModal2(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  */
+ /*async showModal3(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  */
+ /*async showModal4(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  */
+ /*async showModal5(){
+    const modal = await this.modalCtrl.create({
+      component: ModalSMSComponent
+    })
+    modal.present();
+  }
+  */
 }

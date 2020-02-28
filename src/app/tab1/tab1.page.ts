@@ -55,11 +55,11 @@ export class Tab1Page {
   }
 
   //******************** PARTE DO MODAL ***************/
-  async showModal(){
+  /*async showModal(){
     const modal = await this.modalCtrl.create({
       component: ModalSMSComponent
     })
     modal.present();
   }
-  
+  */
 }
