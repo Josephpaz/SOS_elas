@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private backgroundMode: BackgroundMode,
+    private geolocation: Geolocation
   ) {
     this.initializeApp();
   }
@@ -53,7 +55,13 @@ export class AppComponent {
       function whenTimeIsReady() {
         const sms = new SMS();
         const num = "993438459";
-        const mensagem = "Estou em perigo, por favor contate a polícia!";
+        let mensagem = "Estou em perigo, por favor contate a polícia!";
+        this.geolocation.getCurrentPosition().then((resp) => {
+          const URL = "https://www.google.com/maps/@" + resp.coords.latitude + "," + resp.coords.longitude;
+          mensagem += " Estou nesta localização: " + URL;
+         }).catch((error) => {
+           console.log('Erro ao conseguir localização: ', error);
+        });
         const options = {
           replaceLineBreaks: true
         }
