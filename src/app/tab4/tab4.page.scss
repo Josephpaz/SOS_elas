@@ -6,3 +6,25 @@ ion-content ion-toolbar {
   --background: #af5ca0;
   --color: white;
 }
+
+ion-content {
+  --background: white;
+}
+
+.text{
+  color: #af5ca0;
+  text-align: center;
+  font-size: 16px;
+}
+
+ion-icon{
+  color:  #FF5177;
+  font-size: 28px;
+  margin-left: 10px;
+
+}
+
+.align-img-oab{
+  display: flex;
+  justify-content: flex-end;
+}
