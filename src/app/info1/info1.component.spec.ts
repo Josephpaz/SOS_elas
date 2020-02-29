@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { ModalInfo5Component } from './modal-info5.component';
+import { Info1Component } from './info1.component';
 
-describe('ModalInfo5Component', () => {
-  let component: ModalInfo5Component;
-  let fixture: ComponentFixture<ModalInfo5Component>;
+describe('Info1Component', () => {
+  let component: Info1Component;
+  let fixture: ComponentFixture<Info1Component>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModalInfo5Component ],
+      declarations: [ Info1Component ],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ModalInfo5Component);
+    fixture = TestBed.createComponent(Info1Component);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

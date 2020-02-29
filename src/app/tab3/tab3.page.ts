@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ModalInfo1Component } from '../modal-info1/modal-info1.component';
-import { ModalInfo2Component } from '../modal-info2/modal-info2.component';
-import { ModalInfo3Component } from '../modal-info3/modal-info3.component';
-import { ModalInfo4Component } from '../modal-info4/modal-info4.component';
-import { ModalInfo5Component } from '../modal-info5/modal-info5.component';
+import { Info1Component } from '../info1/info1.component';
+import { Info2Component } from '../info2/info2.component';
+import { Info3Component } from '../info3/info3.component';
+import { Info4Component } from '../info4/info4.component';
+import { Info5Component } from '../info5/info5.component';
 
 @Component({
   selector: 'app-tab3',
@@ -16,38 +16,38 @@ export class Tab3Page {
   constructor(private modalCtrl: ModalController) {}
 
   async showModal1(){
-    const modal = await this.modalCtrl.create({
-      component: ModalInfo1Component
+    const modal1 = await this.modalCtrl.create({
+      component: Info1Component
     })
-    modal.present();
+    modal1.present();
   }
   
  async showModal2(){
-    const modal = await this.modalCtrl.create({
-      component:ModalInfo2Component
+    const modal2 = await this.modalCtrl.create({
+      component: Info2Component
     })
-    modal.present();
+    modal2.present();
   }
   
  async showModal3(){
-    const modal = await this.modalCtrl.create({
-      component: ModalInfo3Component
+    const modal3 = await this.modalCtrl.create({
+      component: Info3Component
     })
-    modal.present();
+    modal3.present();
   }
   
  async showModal4(){
-    const modal = await this.modalCtrl.create({
-      component: ModalInfo4Component
+    const modal4 = await this.modalCtrl.create({
+      component: Info4Component
     })
-    modal.present();
+    modal4.present();
   }
   
  async showModal5(){
-    const modal = await this.modalCtrl.create({
-      component: ModalInfo5Component
+    const modal5 = await this.modalCtrl.create({
+      component: Info5Component
     })
-    modal.present();
+    modal5.present();
   }
   
 }

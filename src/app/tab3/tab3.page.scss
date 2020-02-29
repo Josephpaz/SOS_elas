@@ -9,55 +9,42 @@ ion-content ion-toolbar {
 
 #s1{
   --background: #BE59E1;
+  margin-right: 28%;
+  margin-top: 10%;
+  width: 80%;
+  border-radius: 18px;
 }
 
 #s2{
   --background: #F47464;
+  margin-left: 14%;
+  margin-top: 10%;
+  --color: white;
+  width: 85%;
+  border-radius: 18px;
 }
 
 
 #s3{
   --background: #BE59E1;
+  margin-right: 45%;
+  margin-top: 10%;
+  border-radius: 18px;
+  width: 55%;
 }
 
 #s4{
   --background: #F47464;
+  margin-left: 43%;
+  margin-top: 10%;
+  border-radius: 18px;
+  width: 55%;
 }
 
 #s5{
   --background: #BE59E1;
-}
-
-
-.sec2{
-  margin-right: 45%;
-  margin-top: 10%;
-  float: right;
-}
-
-.sec1{
-  margin-right: 28%;
-  margin-top: 10%;
-  width: 70%;
-  float: right;
-}
-
-.sec3{
-  margin-left: 45%;
-  margin-top: 10%;
-  float: left;
-}
-
-.sec4{
-  margin-left: 20%;
-  margin-top: 10%;
-  float: left;
-  --color: white;
-}
-
-.sec5{
-  margin-right: 10%;
+  margin-right: 52%;
   margin-top: 20%;
-  float: right;
-  width: 85%;
+  width: 100%;
 }
+
