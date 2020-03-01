@@ -7,21 +7,66 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-   <img id="fundo" src="/assets/imagens/fundoSobre.png" alt="fundo">
-    
-        <ion-row style="position: relative; margin-top: 25%; margin-bottom: 5px; filter: invert(62%) sepia(91%) saturate(1278%) hue-rotate(326deg) brightness(100%) contrast(93%);">
-          <ion-icon src="../assets/icon/instagram.png" style="zoom: 2; padding:2px;" onclick="window.open('https://www.instagram.com/cunhantadigital/', '_system', 'location=yes'); return false;"></ion-icon>
-          <ion-icon src="../assets/icon/facebook.png" style="zoom: 2; padding:2px;" onclick="window.open('https://www.facebook.com/cunhantadigital', '_system', 'location=yes'); return false;"></ion-icon>
-        </ion-row>
-
-        <ion-row style="position: relative; margin-top: -110%; filter: invert(62%) sepia(91%) saturate(1278%) hue-rotate(326deg) brightness(100%) contrast(93%);">
-          <ion-icon src="../assets/icon/twitter.png" style="zoom: 2; padding: 2px;" onclick="window.open('https://twitter.com/oabam', 'location=yes'); return false;"></ion-icon>
-          <ion-icon src="../assets/icon/instagram.png" style="zoom: 2; padding: 2px;" onclick="window.open('https://www.instagram.com/oabamazonas/?hl=pt-br', '_system', 'location=yes'); return false;"></ion-icon>
-          <ion-icon src="/assets/icon/facebook.png" style="zoom: 2; padding: 2px;" onclick="window.open('https://www.facebook.com/Comiss%C3%A3o-da-Mulher-Advogada-da-OAB-Am-1404832603111264/', '_system', 'location=yes'); return false;"></ion-icon>
-        </ion-row>
-        <ion-row  style="position: relative; margin-top: 25%; margin-bottom: 5px; filter: invert(62%) sepia(91%) saturate(1278%) hue-rotate(326deg) brightness(100%) contrast(93%);">
-          <!--<ion-icon src="/assets/icon/instagram.png" style="zoom: 2; padding:2px;" onclick="window.open('https://www.instagram.com/culturadoam/?hl=pt-br', '_system', 'location=yes'); return false;"></ion-icon>-->
-          <ion-icon src="../assets/icon/facebook.png" style="zoom: 2; padding:2px;" onclick="window.open('https://pt-br.facebook.com/ICompUFAM', '_system', 'location=yes'); return false;"></ion-icon>
-        </ion-row>
+  <ion-grid>
+    <ion-row class="ion-justify-content-center">
+      <img src="../../assets/imagens/logoSOS.png" width="120px" style="margin-top: 16px; margin-bottom: 5px;" />
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <h2 style="color: #af5ca0">
+        Sobre o projeto SOS El@as
+      </h2>
+      <p class="text">
+        Este aplicativo e ações relacionadas está sendo desenvolvido através da parceria entre o projeto Cunhantã
+        Digital,
+        o Instituto de Computação da Universidade Federal do Amazonas (IComp/UFAM) e a OAB (Ordem dos Advogados do
+        Brasil),
+        através da Comissão da Mulher Advogada e da Comissão dos Direitos Digitais e Inovação.
+      </p>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <img src="../../assets/imagens/cunhata_logo-1 2.png" width="160px" style="margin-top: 24px;" />
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-icon name="logo-facebook"
+        onclick="window.open('https://www.facebook.com/cunhantadigital/', '_system', 'location=yes'); return false;">
+      </ion-icon>
+      <ion-icon name="logo-instagram"
+        onclick="window.open('https://www.instagram.com/cunhantadigital/', '_system', 'location=yes'); return false;">
+      </ion-icon>
+    </ion-row>
+    <ion-row style="margin-top: 30px;">
+      <ion-col class="align-img-icomp">
+        <img src="../../assets/imagens/logociompufam 1.png" width="164px" />
+      </ion-col>
+      <ion-col class="align-img-oab">
+        <img src="../../assets/imagens/logoOAB 1.png" width="130px" style="margin-right: 12px;" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-icon name="logo-facebook" 
+          onclick="window.open('https://pt-br.facebook.com/ICompUFAM', '_system', 'location=yes'); return false;">
+        </ion-icon>
+        <ion-icon name="logo-chrome"
+         onclick="window.open('http://icomp.ufam.edu.br/site/', 'location=yes'); return false;">
+        </ion-icon>
+      </ion-col>
+      <ion-col class="align-icons-oab" style="display: flex; justify-content: center;" size="5">
+        <ion-icon name="logo-facebook" class=""
+          onclick="window.open('https://www.facebook.com/Comiss%C3%A3o-da-Mulher-Advogada-da-OAB-Am-1404832603111264/', '_system', 'location=yes'); return false;">
+        </ion-icon>
+        <ion-icon name="logo-instagram"
+          onclick="window.open('https://www.instagram.com/oabamazonas/?hl=pt-br', '_system', 'location=yes'); return false;">
+        </ion-icon>
+        <ion-icon name="logo-twitter" onclick="window.open('https://twitter.com/oabam', 'location=yes'); return false;">
+        </ion-icon>
+        <ion-icon name="logo-chrome" onclick="window.open('https://www.oab.org.br/', 'location=yes'); return false;">
+        </ion-icon>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <a href="http://soselas.oabam.org.br/politica_privacidade/" style="text-align: center; text-decoration-color: #af5ca0; color: #af5ca0; margin-top: 16px;">Política de Privacidade</a>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>
