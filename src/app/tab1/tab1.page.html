@@ -1,29 +1,32 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-title>
-      Contatos de emergencia
+      Contatos
     </ion-title>
   </ion-toolbar>
 </ion-header>
- 
-<ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-            <ion-card *ngFor="let item of data.Contatos; let i = index">
-                <ion-card-header>
-                    <ion-card-title>Contato
-                    </ion-card-title>
-                </ion-card-header>
-              <ion-card-content>
-                <p><strong>Nome</strong>: {{item.nome}}</p>
-                <p><strong>Telefone</strong>: {{item.telefone}}</p>
-                <ion-icon name="trash" (click)="removeContato('Contatos', i)"></ion-icon>
-                <ion-icon name="person-add" (click)="presentAlertPrompt('Contatos', i)"></ion-icon>
-              </ion-card-content>
-            </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
+
+<ion-content [fullscreen]="true">
+  <ion-button expand="block" (click)="presentModal()"> <!--Chamando a Model de todos os contatos-->
+    Selecionar contatos
+  </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let contact of emergencyContacts; index as i">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>{{contact.nome}}</p>
+          </ion-col>
+          <ion-col>
+            <p>{{contact.numero}}</p>
+          </ion-col>
+          <ion-col align-self="center">
+            <ion-button fill="clear" (click)="removeContact(contact.numero)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>

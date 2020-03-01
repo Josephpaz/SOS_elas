@@ -37,6 +37,8 @@
     "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-device-motion": "^2.0.1",
+    "cordova-plugin-geolocation": "^4.0.2",
+    "cordova-sms-plugin": "^1.0.0",
     "cordova-sqlite-storage": "^4.0.0",
     "core-js": "^2.5.4",
     "rxjs": "~6.5.1",
@@ -77,17 +79,22 @@
   "cordova": {
     "plugins": {
       "cordova-sms-plugin": {},
-      "cordova-android-support-gradle-release": {},
+      "cordova-android-support-gradle-release": {
+        "ANDROID_SUPPORT_VERSION": "27.+"
+      },
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-webview": {},
+      "cordova-plugin-ionic-webview": {
+        "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
+      },
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {},
       "cordova-sqlite-storage": {},
       "cordova-plugin-background-mode": {},
-      "cordova-plugin-device-motion": {}
+      "cordova-plugin-device-motion": {},
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "android"

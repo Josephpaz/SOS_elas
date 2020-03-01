@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="toolbar">
+    <ion-button fill="clear" (click)="dismissModal()">
+      <ion-icon name="arrow-back"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list><!--lista onde vao aparecer os contatos-->
+    <ion-item-sliding *ngFor="let c of myContacts">  <!--Instancian o objeto que acessará a lista de contatos-->
+      <ion-item>
+        <ion-label>{{c.name.givenName}} <b>{{c.name.familyName}}</b> <!--Pegando Nome e Sobrenome do Contato-->
+          <p>{{c.phoneNumbers[0].value}}</p> <!--Pegando o Numero do Contato-->
+        </ion-label>
+        <ion-button color="success" (click)="getContact(c)" >salvar</ion-button> <!-- Disparando uma funcao que tem como parametro o Objeto o Contato-->
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>
