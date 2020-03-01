@@ -6,12 +6,21 @@ ion-slides {
   
 }
 
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  justify-items:  center;
+  align-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
 .tituloGuia{
   font-family: Averia Serif Libre;
   font-style: bold italic;
   font-size: 27px;
   color: white;
-  padding: 1em;
 }
 
 .textoGuia{
@@ -19,10 +28,6 @@ ion-slides {
   font-style: bold;
   font-size: 24px;
   color:white;
-  margin-top: 250;
-  padding: 1em;
-
-
 }
 
 #slide01{
