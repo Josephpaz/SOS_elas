@@ -4,10 +4,13 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SMS, SmsOptions } from '@ionic-native/sms/ngx';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
-import { Shake } from '@ionic-native/shake/ngx';
+import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+
+
 
 
 @Component({
@@ -24,7 +27,8 @@ export class AppComponent {
     private geolocation: Geolocation,
     private storage: Storage,
     public backgroundMode : BackgroundMode,
-    private shake: Shake
+    private deviceMotion: DeviceMotion,
+    private callNumber: CallNumber
   ) {
     this.initializeApp();
   }
@@ -34,12 +38,18 @@ export class AppComponent {
   intervalButton: any;
   contatos: any;
 
+  lastX:number;
+  lastY:number;
+  lastZ:number;
+  moveCounter:number = 0;
+
   initializeApp() { //roda assim q o app é aberto
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.detectaShake();
     });     
-      this.intervalButton = setInterval(()=> {this.enviaSMS()}, 1500); //2seg
+      this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 1500); //2seg
       document.addEventListener('volumedownbutton', (event) => {
         console.log('Botao pressionado');
         this.flagBotaoVolumeDown += 1;
@@ -51,11 +61,11 @@ export class AppComponent {
 
   }
 
-  enviaSMS(){
-    if(this.flagBotaoVolumeUp >= 2 && this.flagBotaoVolumeDown >= 2){
+  enviaSMS(call:boolean){
+    if((this.flagBotaoVolumeUp >= 2 && this.flagBotaoVolumeDown >= 2) || call == true){
       console.log('Envia SMS OK');
       this.pegarContatos();
-      let mensagem = 'Estou em perigo, por favor contate a polícia! \n\n Minha localização:\n';
+      let mensagem = 'Socorro, eu estou em uma situação de possível perigo! \n\n Minha localização:\n';
       let localizacao = 'https://www.google.com/maps/search/?api=1&query=';
       const sms = new SMS();
 
@@ -66,7 +76,7 @@ export class AppComponent {
         
         localizacao += latitude + "," + longitude + '\n Precisão:' + precisao + ' metros';
         for(let i=0; i<5; i++){
-          this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); });
+          this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
           if(this.contatos[i].nome != ''){
             alert('Enviando SMS para:' + this.contatos[i].nome);
           }
@@ -93,10 +103,6 @@ export class AppComponent {
     sms.send(num, mensagem, options);
   }
 
-  shakeDetecta(){
-    //todo
-  }
-
   //contatos
   pegarContatos(){
     this.storage.get('Contatos').then((data) => {
@@ -108,4 +114,46 @@ export class AppComponent {
   sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
+
+  detectaShake(){
+      let subscription = this.deviceMotion.watchAcceleration({frequency:200}).subscribe(acc => { //listener para o shake
+        //console.log(acc);
+
+        if(!this.lastX) {
+          this.lastX = acc.x;
+          this.lastY = acc.y;
+          this.lastZ = acc.z;
+          return;
+        }
+        //pega o modulo e compara com o anterior
+        let deltaX:number, deltaY:number, deltaZ:number;
+        deltaX = Math.abs(acc.x-this.lastX);
+        deltaY = Math.abs(acc.y-this.lastY);
+        deltaZ = Math.abs(acc.z-this.lastZ);
+        //a diferença de velocidade deve ser maior que x
+        if(deltaX + deltaY + deltaZ > 10) {
+          this.moveCounter++;
+        } else {
+          this.moveCounter = Math.max(0, --this.moveCounter);
+        }
+
+        if(this.moveCounter > 10) { //se detectar o shake, pelo menos 10 vezes
+          console.log('SHAKE');
+          if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
+            alert('SHAKE');
+            this.enviaSMS(true);
+            this.callNumber.callNumber("*544#", true);
+            this.moveCounter=0; 
+          }
+        }
+
+        this.lastX = acc.x;
+        this.lastY = acc.y;
+        this.lastZ = acc.z;
+
+      });
+  }
+
+  //shake
+  
 }

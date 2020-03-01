@@ -23,6 +23,7 @@
     "@ionic-native/call-number": "^5.22.0",
     "@ionic-native/contacts": "^5.22.0",
     "@ionic-native/core": "^5.0.0",
+    "@ionic-native/device-motion": "^5.22.0",
     "@ionic-native/geolocation": "^5.22.0",
     "@ionic-native/shake": "^5.22.0",
     "@ionic-native/sms": "^5.22.0",
@@ -85,7 +86,8 @@
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-geolocation": {},
       "cordova-sqlite-storage": {},
-      "cordova-plugin-background-mode": {}
+      "cordova-plugin-background-mode": {},
+      "cordova-plugin-device-motion": {}
     },
     "platforms": [
       "android"

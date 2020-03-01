@@ -1,4 +1,3 @@
-<!--Mesmo código que página guia, sem o botão no último slide. Scss igual.-->
 <ion-slides pager="true" [options]="slideOpts">
   <ion-slide id="slide01">
     <ion-row  class="flex-container">
@@ -68,7 +67,9 @@
       <ion-row class="textoGuia">
         <p>Em caso de extremo perigo, além de apertar o botão de volume por 2 segundos, em seguida (ou ao mesmo tempo) agite o celular por 1 segundo para ligar para polícia.</p>
       </ion-row>
-      
+      <ion-row>
+        <ion-button (click)="finish()">Continuar</ion-button>
+      </ion-row>
     </ion-row>
   </ion-slide>
 </ion-slides>
