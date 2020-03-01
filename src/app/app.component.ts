@@ -43,7 +43,7 @@ export class AppComponent {
   lastZ:number;
   moveCounter:number = 0;
 
-  initializeApp() { //roda assim q o app é aberto
+  initializeApp() { //roda assim q o app é aberto G
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
@@ -61,7 +61,7 @@ export class AppComponent {
 
   }
 
-  enviaSMS(call:boolean){
+  enviaSMS(call:boolean){ //G
     if((this.flagBotaoVolumeUp >= 2 && this.flagBotaoVolumeDown >= 2) || call == true){
       console.log('Envia SMS OK');
       this.pegarContatos();
@@ -95,7 +95,7 @@ export class AppComponent {
     }
   }
 
-  async enviarSMS(num:string, mensagem:string) {
+  async enviarSMS(num:string, mensagem:string) { //G
     const sms = new SMS();
     const options = {
       replaceLineBreaks: true
@@ -104,18 +104,18 @@ export class AppComponent {
   }
 
   //contatos
-  pegarContatos(){
+  pegarContatos(){ //G
     this.storage.get('Contatos').then((data) => {
       this.contatos = data;
       //console.log(this.contatos);
     });
   }
 
-  sleep(ms) {
+  sleep(ms) { //G
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  detectaShake(){
+  detectaShake(){ //G
       let subscription = this.deviceMotion.watchAcceleration({frequency:200}).subscribe(acc => { //listener para o shake
         //console.log(acc);
 

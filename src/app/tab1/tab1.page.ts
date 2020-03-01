@@ -24,7 +24,7 @@ export class Tab1Page {
   }
 
   ngOnInit(){
-    this.platform.ready().then(() => {
+    this.platform.ready().then(() => { //G
       this.backgroundMode.enable();
       this.storage.get('Contatos')
       .then((res) => {
@@ -88,9 +88,9 @@ export class Tab1Page {
       console.log('get error for ' + key + '', error);
     });
   }   
-  //
+  //FIM Retirado da internet
 
-  removeContato(key:string, id:number){
+  removeContato(key:string, id:number){ //G
     this.storage.get(key).then((dados) => {
       console.log(dados);
       dados[id].nome = '';
@@ -99,7 +99,7 @@ export class Tab1Page {
     });
   }
 
-  addContato(key:string, id:number, nome:string, telefone:string){
+  addContato(key:string, id:number, nome:string, telefone:string){ //G
     this.storage.get(key).then((dados) => {
       console.log(dados);
       dados[id].nome = nome;
@@ -108,7 +108,7 @@ export class Tab1Page {
     });
   }
 
-  async presentAlertPrompt(key:string, id:number) {
+  async presentAlertPrompt(key:string, id:number) { //G
     const alert = await this.alertController.create({
       header: 'Adicionar Contato',
       inputs: [
