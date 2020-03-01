@@ -9,6 +9,7 @@ import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { Media, MediaObject } from '@ionic-native/media/ngx'
 
 
 
@@ -140,9 +141,8 @@ export class AppComponent {
         if(this.moveCounter > 10) { //se detectar o shake, pelo menos 10 vezes
           console.log('SHAKE');
           if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
-            alert('SHAKE');
             this.enviaSMS(true);
-            this.callNumber.callNumber("*544#", true);
+            this.callNumber.callNumber("000", true);
             this.moveCounter=0; 
           }
         }
