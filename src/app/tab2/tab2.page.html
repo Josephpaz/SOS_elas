@@ -1,17 +1,82 @@
-<ion-header [translucent]="true">
-  <ion-toolbar class="toolbar">
-    <ion-title>
-      Como funciona?
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<!--Mesmo código que página guia, sem o botão no último slide. Scss igual.-->
+<ion-slides pager="true" [options]="slideOpts">
+  <ion-slide id="slide01">
+    <ion-row  class="ion-justify-content-center ">
+      <ion-row>
+        <ion-img src="../assets/guia/logobranco.svg"></ion-img>
+      </ion-row>
+      <ion-row class="tituloGuia">
+        <p>Como configurar</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/guia1.svg'></ion-img>
+      </ion-row>
+      <ion-row class="textoGuia">
+        <p>Cadastre seus contatos de confiança.</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/swipe.svg'></ion-img>
+      </ion-row>
+    </ion-row>
+  </ion-slide>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-slide id="slide02">
+    <ion-row  class="ion-justify-content-center ">
+      <ion-row>
+        <ion-img src="../assets/guia/logobranco.svg"></ion-img>
+      </ion-row>
+      <ion-row class="tituloGuia">
+        <p>Como alertar seus contatos</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/guia2.svg'></ion-img>
+      </ion-row>
+      <ion-row class="textoGuia">
+        <p>Em situações de possível perigo, pressione o botão de volume por 2 segundos.</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/swipe.svg'></ion-img>
+      </ion-row>
+    </ion-row>
+  </ion-slide>    
 
-  <ion-text>Aqui entraria os slides de como funciona</ion-text>
-</ion-content>
+  <ion-slide id="slide03">
+    <ion-row  class="ion-justify-content-center ">
+      <ion-row>
+        <ion-img src="../assets/guia/logobranco.svg"></ion-img>
+      </ion-row>
+      <ion-row class="tituloGuia">
+        <p>Como alertar seus contatos</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/guia3.svg'></ion-img>
+      </ion-row>
+      <ion-row class="textoGuia">
+        <p>Uma mensagem via sms, fotos da camera traseira e frontal e sua geolocalização serão enviados automaticamente.</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/swipe.svg'></ion-img>
+      </ion-row>
+    </ion-row>
+  </ion-slide>
+
+  <ion-slide id="slide04">
+    <ion-row  class="ion-justify-content-center ">
+      <ion-row>
+        <ion-img src="../assets/guia/logobranco.svg"></ion-img>
+      </ion-row>
+      <ion-row class="tituloGuia">
+        <p>Como ligar automaticamente para a polícia</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/guia4.svg'></ion-img>
+      </ion-row>
+      <ion-row class="textoGuia">
+        <p>Em caso de extremo perigo, além de apertar o botão de volume por 2 segundos, em seguida (ou ao mesmo tempo) agite o celular por 1 segundo para ligar para polícia.</p>
+      </ion-row>
+      <ion-row>
+        <ion-img src='../assets/guia/swipe.svg'></ion-img>
+      </ion-row>
+    </ion-row>
+  </ion-slide>
+</ion-slides>

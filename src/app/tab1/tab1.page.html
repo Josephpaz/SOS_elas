@@ -1,23 +1,29 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-title>
-      Contatos de emergência
+      Contatos de emergencia
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-button class = "botaoContatos" (click)="loadContacts()" expand="block">Adicionar contatos</ion-button>
-  <ion-list><!--lista onde vao aparecer os contatos-->
-    <ion-item-sliding *ngFor="let c of myContacts">
-      <ion-item>
-        <ion-label>{{c.name.givenName}} <b>{{c.name.familyName}}</b>
-          <p>{{c.phoneNumbers[0].value}}</p>
-        </ion-label>
-      </ion-item>
-
-    </ion-item-sliding>
-  </ion-list>
+ 
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+            <ion-card *ngFor="let item of data.Contatos; let i = index">
+                <ion-card-header>
+                    <ion-card-title>Contato
+                    </ion-card-title>
+                </ion-card-header>
+              <ion-card-content>
+                <p><strong>Nome</strong>: {{item.nome}}</p>
+                <p><strong>Telefone</strong>: {{item.telefone}}</p>
+                <ion-icon name="trash" (click)="removeContato('Contatos', i)"></ion-icon>
+                <ion-icon name="person-add" (click)="presentAlertPrompt('Contatos', i)"></ion-icon>
+              </ion-card-content>
+            </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>
-
-
