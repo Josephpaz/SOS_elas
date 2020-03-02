@@ -12,6 +12,7 @@ export class ContatosPage implements OnInit {
   todosContatos: any;
   id:number;
   data: any;
+  searchTerm: string;
 
   constructor(private contacts: Contacts, private route: ActivatedRoute, private router: Router, private storage: Storage) { 
     this.route.queryParams.subscribe(params => {
@@ -19,7 +20,7 @@ export class ContatosPage implements OnInit {
         this.id = this.router.getCurrentNavigation().extras.state.id;
       }
     });
-    this.getFromContacts();
+    this.getFromContacts('');
     this.data = {};
   }
   
@@ -27,9 +28,9 @@ export class ContatosPage implements OnInit {
   ngOnInit() {
   }
 
-  getFromContacts(){
+  getFromContacts(filter:string){
     let options = {
-      filter: '',
+      filter: filter, //para a barra de pesquisa
       multiple: true,
       hasPhoneNumber: true,
     };
@@ -37,9 +38,11 @@ export class ContatosPage implements OnInit {
     this.contacts.find(['*'], options).then((contacts: Contact[])=> {
       this.todosContatos = contacts;
     });
+    console.log(this.todosContatos);
+    //this.todosContatos.forEach(console.log('test'));
   }
 
-  callContact(number: string, nome:string) {
+  passaContact(number: string, nome:string) {
     //alert(nome + ' ' + number);
     this.addContato('Contatos', this.id, nome, number);
     this.router.navigate(['/tabs/tab1']);

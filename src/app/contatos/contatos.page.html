@@ -3,21 +3,14 @@
     <ion-title>
       Selecionar contato
     </ion-title>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getFromContacts(searchTerm)" showCancelButton="focus"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
-
 <ion-content>
-  <!--ion-list>
-    <ion-item button (click)="callContact(contact.phoneNumbers[0].value, contact.displayName)" *ngFor="let contact of todosContatos | async">
-      <ion-icon *ngIf="contact.phoneNumbers"></ion-icon>
-      <ion-label>
-        {{contact.displayName}}
-      </ion-label>
-    </ion-item>
-  </ion-list-->
+
   <ion-list>
     <ion-item-sliding *ngFor="let c of todosContatos">
-      <ion-item button (click)="callContact(c.phoneNumbers[0].value, c.name.givenName)"> 
+      <ion-item button (click)="passaContact(c.phoneNumbers[0].value, c.name.givenName)"> 
         <ion-label>{{c.name.givenName}} <b>{{c.name.familyName}}</b>
           <p>{{c.phoneNumbers[0].value}}</p>
         </ion-label>
