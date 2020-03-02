@@ -50,7 +50,7 @@ export class AppComponent {
       this.splashScreen.hide();
       this.detectaShake();
     });     
-      this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 1500); //2seg
+      this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 2000); //2seg
       document.addEventListener('volumedownbutton', (event) => {
         console.log('Botao pressionado');
         this.flagBotaoVolumeDown += 1;
@@ -63,7 +63,7 @@ export class AppComponent {
   }
 
   enviaSMS(call:boolean){ //G
-    if((this.flagBotaoVolumeUp >= 2 && this.flagBotaoVolumeDown >= 2) || call == true){
+    if((this.flagBotaoVolumeUp >= 1 || this.flagBotaoVolumeDown >= 1) || call == true){
       console.log('Envia SMS OK');
       this.pegarContatos();
       let mensagem = 'Socorro, eu estou em uma situação de possível perigo! \n\n Minha localização:\n';
@@ -138,7 +138,7 @@ export class AppComponent {
           this.moveCounter = Math.max(0, --this.moveCounter);
         }
 
-        if(this.moveCounter > 10) { //se detectar o shake, pelo menos 10 vezes
+        if(this.moveCounter > 4) { //se detectar o shake, pelo menos 10 vezes
           console.log('SHAKE');
           if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
             this.enviaSMS(true);

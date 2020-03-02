@@ -91,7 +91,8 @@
       "cordova-sqlite-storage": {},
       "cordova-plugin-background-mode": {},
       "cordova-plugin-device-motion": {},
-      "cordova-plugin-media": {}
+      "cordova-plugin-media": {},
+      "cordova-plugin-contacts": {}
     },
     "platforms": [
       "android"

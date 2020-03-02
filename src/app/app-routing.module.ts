@@ -12,7 +12,11 @@ const routes: Routes = [
     //criei página guia
     path: 'guia',
     loadChildren: () => import('./guia/guia.module').then( m => m.GuiaPageModule)
+  },  {
+    path: 'contatos',
+    loadChildren: () => import('./contatos/contatos.module').then( m => m.ContatosPageModule)
   }
+
 ];
 @NgModule({
   imports: [

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { Router, NavigationExtras } from '@angular/router';
 
 import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { AlertController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
+
 
 
 @Component({
@@ -13,23 +15,26 @@ import { Platform } from '@ionic/angular';
 })
 export class Tab1Page {
   data: any;
+  interval: any;
  
   constructor(
     private storage: Storage,
     public backgroundMode : BackgroundMode,
     public alertController: AlertController,
     private platform: Platform,
+    private route: Router
   ) {
     this.data = {};
   }
-
-  ngOnInit(){
+  
+  ionViewWillEnter(){
     this.platform.ready().then(() => { //G
       this.backgroundMode.enable();
-      this.storage.get('Contatos')
-      .then((res) => {
+      this.interval = setInterval(()=> {this.reloadPage()}, 1000); //0.1seg
+      //this.getFromContacts();
+      this.storage.get('Contatos').then((res) => {
         if(res !== null){
-          console.log(res)
+          console.log(res);
           this.data.Contatos = res;
         }else{
           let contatosEmerg = [
@@ -64,6 +69,45 @@ export class Tab1Page {
       });
     }); 
   }
+
+  reloadPage(){ //solução temporaria, arrumar 
+    this.storage.get('Contatos').then((res) => {
+      if(res !== null){
+        console.log(res);
+        this.data.Contatos = res;
+      }else{
+        let contatosEmerg = [
+          {
+            nome: "",
+            telefone: ""
+          },
+          {
+            nome: "",
+            telefone: ""
+          },
+          {
+            nome: "",
+            telefone: ""
+          },
+          {
+            nome: "",
+            telefone: ""
+          },
+          {
+            nome: "",
+            telefone: ""
+          }
+        ];
+     
+        //Set Object Value
+        this.setValue("Contatos", contatosEmerg);
+      }
+    },
+    (err) => {
+      console.log(err)
+    });
+  }
+
   //Retirado da internet
   // set a key/value
   setValue(key: string, value: any) {
@@ -142,5 +186,14 @@ export class Tab1Page {
     });
 
     await alert.present();
+  }
+
+  getFromContacts(i:number){ //G
+    let navigationExtras: NavigationExtras = {
+      state: {
+        id: i
+      }
+    };
+    this.route.navigate(['/contatos'], navigationExtras);
   }
 }

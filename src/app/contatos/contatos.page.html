@@ -1,0 +1,18 @@
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-title>
+      Selecionar contato
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item button (click)="callContact(contact.phoneNumbers[0].value, contact.displayName)" *ngFor="let contact of todosContatos | async">
+      <ion-icon *ngIf="contact.phoneNumbers"></ion-icon>
+      <ion-label>
+        {{contact.displayName}}
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
