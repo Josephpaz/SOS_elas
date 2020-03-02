@@ -142,7 +142,7 @@ export class AppComponent {
           console.log('SHAKE');
           if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
             this.enviaSMS(true);
-            this.callNumber.callNumber("000", true);
+            this.callNumber.callNumber("190", true);
             this.moveCounter=0; 
           }
         }

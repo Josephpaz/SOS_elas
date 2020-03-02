@@ -30,8 +30,9 @@ import { DeviceMotion } from '@ionic-native/device-motion/ngx';
     SMS,
     Geolocation,
     BackgroundMode,
-    Storage,
-    DeviceMotion
+    //Storage,
+    DeviceMotion,
+    IonicStorageModule
   ],
   bootstrap: [AppComponent]
 })
