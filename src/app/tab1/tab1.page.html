@@ -18,9 +18,9 @@
               <ion-card-content>
                 <p><strong>Nome</strong>: {{item.nome}}</p>
                 <p><strong>Telefone</strong>: {{item.telefone}}</p>
-                <ion-icon name="trash" (click)="removeContato('Contatos', i)" style="width: 33%;"></ion-icon>
-                <ion-icon name="person-add" (click)="presentAlertPrompt('Contatos', i)" style="width: 33%;"></ion-icon>
                 <ion-icon name="people" (click)="getFromContacts(i)" style="width: 33%;"></ion-icon>
+                <ion-icon name="person-add" (click)="presentAlertPrompt('Contatos', i)" style="width: 33%;"></ion-icon>
+                <ion-icon name="trash" (click)="removeContato('Contatos', i)" style="width: 33%;"></ion-icon>
               </ion-card-content>
             </ion-card>
       </ion-col>

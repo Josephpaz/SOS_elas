@@ -53,10 +53,6 @@ export class Tab1Page {
             {
               nome: "",
               telefone: ""
-            },
-            {
-              nome: "",
-              telefone: ""
             }
           ];
        
@@ -77,10 +73,6 @@ export class Tab1Page {
         this.data.Contatos = res;
       }else{
         let contatosEmerg = [
-          {
-            nome: "",
-            telefone: ""
-          },
           {
             nome: "",
             telefone: ""

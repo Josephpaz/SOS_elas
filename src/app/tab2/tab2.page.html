@@ -1,4 +1,11 @@
-<!--Mesmo código que página guia, sem o botão no último slide. Scss igual.-->
+<ion-header [translucent]="true">
+  <ion-toolbar class="toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="#"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
 <ion-slides pager="true" [options]="slideOpts">
   <ion-slide id="slide01">
     <ion-row  class="flex-container">

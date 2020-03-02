@@ -1,3 +1,7 @@
+ion-content {
+  --background: white;
+}
+
 ion-content ion-toolbar {
   --background: #af5ca0;
 }
@@ -7,43 +11,35 @@ ion-content ion-toolbar {
   --color: white;
 }
 
+.textCard{
+  --color: white ;
+}
+
 #s1{
   --background: #BE59E1;
-  margin-right: 28%;
-  margin-top: 10%;
-  width: 80%;
+  --color: white;
   border-radius: 18px;
 }
 
 #s2{
   --background: #F47464;
-  margin-left: 14%;
-  margin-top: 10%;
   --color: white;
-  width: 85%;
   border-radius: 18px;
 }
 
-
 #s3{
   --background: #BE59E1;
-  margin-right: 45%;
-  margin-top: 10%;
   border-radius: 18px;
-  width: 55%;
+
 }
 
 #s4{
   --background: #F47464;
-  margin-left: 43%;
-  margin-top: 10%;
   border-radius: 18px;
-  width: 55%;
+  
 }
 
 #s5{
   --background: #BE59E1;
-  margin-right: 52%;
-  margin-top: 20%;
-  width: 100%;
+  
 }

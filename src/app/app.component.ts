@@ -76,7 +76,7 @@ export class AppComponent {
         let precisao = Math.floor(position.coords.accuracy);
         
         localizacao += latitude + "," + longitude + '\n Precisão:' + precisao + ' metros';
-        for(let i=0; i<5; i++){
+        for(let i=0; i<4; i++){
           this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
           if(this.contatos[i].nome != ''){
             alert('Enviando SMS para:' + this.contatos[i].nome);

@@ -28,7 +28,15 @@ export class ContatosPage implements OnInit {
   }
 
   getFromContacts(){
-    this.todosContatos = this.contacts.find(["*"]);
+    let options = {
+      filter: '',
+      multiple: true,
+      hasPhoneNumber: true,
+    };
+    //this.todosContatos = this.contacts.find(["*"]);
+    this.contacts.find(['*'], options).then((contacts: Contact[])=> {
+      this.todosContatos = contacts;
+    });
   }
 
   callContact(number: string, nome:string) {
