@@ -10,11 +10,11 @@ import { Storage } from '@ionic/storage';
 })
 export class ContatosPage implements OnInit {
   todosContatos: any;
-  id:number;
+  id: number;
   data: any;
   searchTerm: string;
 
-  constructor(private contacts: Contacts, private route: ActivatedRoute, private router: Router, private storage: Storage) { 
+  constructor(private contacts: Contacts, private route: ActivatedRoute, private router: Router, private storage: Storage) {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.id = this.router.getCurrentNavigation().extras.state.id;
@@ -23,26 +23,33 @@ export class ContatosPage implements OnInit {
     this.getFromContacts('');
     this.data = {};
   }
-  
+
 
   ngOnInit() {
   }
 
-  getFromContacts(filter:string){
+  getFromContacts(filter: string) {
     let options = {
       filter: filter, //para a barra de pesquisa
       multiple: true,
       hasPhoneNumber: true,
     };
     //this.todosContatos = this.contacts.find(["*"]);
-    this.contacts.find(['*'], options).then((contacts: Contact[])=> {
+    this.contacts.find(['*'], options).then((contacts: Contact[]) => {
       this.todosContatos = contacts;
+      this.todosContatos.sort((a, b) => {
+        if (a.name.givenName > b.name.givenName)
+          return 1;
+        if (a.name.givenName < b.name.givenName)
+          return -1;
+        return 0;
+      })
+
     });
     console.log(this.todosContatos);
-    //this.todosContatos.forEach(console.log('test'));
   }
 
-  passaContact(number: string, nome:string) {
+  passaContact(number: string, nome: string) {
     //alert(nome + ' ' + number);
     this.addContato('Contatos', this.id, nome, number);
     this.router.navigate(['/tabs/tab1']);
@@ -54,15 +61,15 @@ export class ContatosPage implements OnInit {
   setValue(key: string, value: any) {
     this.storage.set(key, value).then((response) => {
       console.log('set' + key + ' ', response);
- 
+
       //get Value Saved in key
       this.getValue(key);
- 
+
     }).catch((error) => {
       console.log('set error for ' + key + ' ', error);
     });
   }
- 
+
   // get a key/value pair
   getValue(key: string) {
     this.storage.get(key).then((val) => {
@@ -72,10 +79,10 @@ export class ContatosPage implements OnInit {
     }).catch((error) => {
       console.log('get error for ' + key + '', error);
     });
-  }   
+  }
   //FIM Retirado da internet
 
-  addContato(key:string, id:number, nome:string, telefone:string){ //G
+  addContato(key: string, id: number, nome: string, telefone: string) { //G
     this.storage.get(key).then((dados) => {
       console.log(dados);
       dados[id].nome = nome;
