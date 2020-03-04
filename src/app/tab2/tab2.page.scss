@@ -1,4 +1,15 @@
+ion-content {
+  --background: white;
+}
 
+ion-content ion-toolbar {
+  --background: #af5ca0;
+}
+
+.toolbar{
+  --background: #af5ca0;
+  --color: white;
+}
 
 ion-slides {
   height: 100vh !important;
