@@ -35,16 +35,15 @@ export class ContatosPage implements OnInit {
       hasPhoneNumber: true,
     };
     //this.todosContatos = this.contacts.find(["*"]);
-    this.contacts.find(['*'], options).then((contacts: Contact[]) => {
+    this.contacts.find(["*"], options).then((contacts: Contact[]) => {
       this.todosContatos = contacts;
-      this.todosContatos.sort((a, b) => {
+      this.todosContatos.sort((a: any, b: any) => {
         if (a.name.givenName > b.name.givenName)
           return 1;
         if (a.name.givenName < b.name.givenName)
           return -1;
         return 0;
       })
-
     });
     console.log(this.todosContatos);
   }
@@ -87,7 +86,7 @@ export class ContatosPage implements OnInit {
       console.log(dados);
       dados[id].nome = nome;
       dados[id].telefone = telefone;
-      this.setValue("Contatos", dados);
+      this.setValue('Contatos', dados);
     });
   }
 

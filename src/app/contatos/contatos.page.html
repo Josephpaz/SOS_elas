@@ -1,9 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar class="toolbar">
     <ion-title>
-      Selecionar contato
+      <p>
+        Selecionar contato
+      </p>
     </ion-title>
-    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getFromContacts(searchTerm)" showCancelButton="focus"></ion-searchbar>
+    <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="getFromContacts(searchTerm)" showCancelButton="focus" style="margin-bottom: 4px;"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 <ion-content>

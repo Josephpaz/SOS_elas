@@ -48,7 +48,6 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.detectaShake();
     });     
       this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 2000); //2seg
       document.addEventListener('volumedownbutton', (event) => {
@@ -62,7 +61,7 @@ export class AppComponent {
 
   }
 
-  enviaSMS(call:boolean){ //G
+ async enviaSMS(call:boolean){ //G
     if((this.flagBotaoVolumeUp >= 1 || this.flagBotaoVolumeDown >= 1) || call == true){
       console.log('Envia SMS OK');
       this.pegarContatos();
@@ -79,12 +78,13 @@ export class AppComponent {
         for(let i=0; i<4; i++){
           this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
           if(this.contatos[i].nome != ''){
-            alert('Enviando SMS para:' + this.contatos[i].nome);
+            alert('Enviando SMS para:' + this.contatos[i].nome+'Número: '+ this.contatos[i].telefone);
           }
         }
         //console.log(localizacao);
       }).catch((error) => {
           console.log('Erro ao conseguir localização: ', error);
+          alert('Erro ao enviar a localização: '+ JSON.stringify(error));
       });
       this.flagBotaoVolumeUp = 0;
       this.flagBotaoVolumeDown = 0;
@@ -97,11 +97,10 @@ export class AppComponent {
   }
 
   async enviarSMS(num:string, mensagem:string) { //G
-    const sms = new SMS();
     const options = {
       replaceLineBreaks: true
     }
-    sms.send(num, mensagem, options);
+    this.sms.send(num, mensagem, options);
   }
 
   //contatos
@@ -116,44 +115,7 @@ export class AppComponent {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
 
-  detectaShake(){ //G
-      let subscription = this.deviceMotion.watchAcceleration({frequency:200}).subscribe(acc => { //listener para o shake
-        //console.log(acc);
-
-        if(!this.lastX) {
-          this.lastX = acc.x;
-          this.lastY = acc.y;
-          this.lastZ = acc.z;
-          return;
-        }
-        //pega o modulo e compara com o anterior
-        let deltaX:number, deltaY:number, deltaZ:number;
-        deltaX = Math.abs(acc.x-this.lastX);
-        deltaY = Math.abs(acc.y-this.lastY);
-        deltaZ = Math.abs(acc.z-this.lastZ);
-        //a diferença de velocidade deve ser maior que x
-        if(deltaX + deltaY + deltaZ > 10) {
-          this.moveCounter++;
-        } else {
-          this.moveCounter = Math.max(0, --this.moveCounter);
-        }
-
-        if(this.moveCounter > 4) { //se detectar o shake, pelo menos 10 vezes
-          console.log('SHAKE');
-          if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
-            this.enviaSMS(true);
-            this.callNumber.callNumber("190", true);
-            this.moveCounter=0; 
-          }
-        }
-
-        this.lastX = acc.x;
-        this.lastY = acc.y;
-        this.lastZ = acc.z;
-
-      });
-  }
-
+ 
   //shake
   
 }

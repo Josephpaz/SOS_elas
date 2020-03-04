@@ -1,4 +1,9 @@
 .toolbar{
     --background: #af5ca0;
     --color: white;
-  }
+}
+
+ion-title > p {
+    margin-top: 10px;
+    margin-bottom: 8px;
+}
