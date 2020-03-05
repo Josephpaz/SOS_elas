@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { Router, NavigationExtras } from '@angular/router';
 
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { AlertController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
 
@@ -19,7 +18,6 @@ export class Tab1Page {
  
   constructor(
     private storage: Storage,
-    public backgroundMode : BackgroundMode,
     public alertController: AlertController,
     private platform: Platform,
     private route: Router
@@ -29,7 +27,6 @@ export class Tab1Page {
   
   ionViewWillEnter(){
     this.platform.ready().then(() => { //G
-      this.backgroundMode.enable();
       this.interval = setInterval(()=> {this.reloadPage()}, 1000); //0.1seg
       //this.getFromContacts();
       this.storage.get('Contatos').then((res) => {

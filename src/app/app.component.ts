@@ -7,9 +7,7 @@ import { SMS, SmsOptions } from '@ionic-native/sms/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
-import { Media, MediaObject } from '@ionic-native/media/ngx'
 
 
 
@@ -27,7 +25,6 @@ export class AppComponent {
     private sms: SMS,
     private geolocation: Geolocation,
     private storage: Storage,
-    public backgroundMode : BackgroundMode,
     private deviceMotion: DeviceMotion,
     private callNumber: CallNumber
   ) {
@@ -138,7 +135,7 @@ export class AppComponent {
           this.moveCounter = Math.max(0, --this.moveCounter);
         }
 
-        if(this.moveCounter > 4) { //se detectar o shake, pelo menos 10 vezes
+        if(this.moveCounter > 4) { //se detectar o shake, pelo menos 4 vezes
           console.log('SHAKE');
           if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
             this.enviaSMS(true);

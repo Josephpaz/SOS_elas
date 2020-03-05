@@ -13,7 +13,6 @@ import { Contacts } from '@ionic-native/contacts/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { SMS } from '@ionic-native/sms/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { DeviceMotion } from '@ionic-native/device-motion/ngx';
 
@@ -29,8 +28,6 @@ import { DeviceMotion } from '@ionic-native/device-motion/ngx';
     CallNumber,
     SMS,
     Geolocation,
-    BackgroundMode,
-    //Storage,
     DeviceMotion,
     IonicStorageModule
   ],
