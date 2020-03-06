@@ -1,7 +1,8 @@
 {
   "name": "SOSElas",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   },
   "type": "angular"
 }

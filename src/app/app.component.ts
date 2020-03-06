@@ -48,6 +48,7 @@ export class AppComponent {
       this.detectaShake();
     });     
       this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 2000); //2seg
+      /*
       document.addEventListener('volumedownbutton', (event) => {
         console.log('Botao pressionado');
         this.flagBotaoVolumeDown += 1;
@@ -56,7 +57,7 @@ export class AppComponent {
         console.log('Botao pressionado');
         this.flagBotaoVolumeUp += 1;
       });
-
+      */
   }
 
   enviaSMS(call:boolean){ //G
@@ -73,12 +74,13 @@ export class AppComponent {
         let precisao = Math.floor(position.coords.accuracy);
         
         localizacao += latitude + "," + longitude + '\n Precisão:' + precisao + ' metros';
-        for(let i=0; i<4; i++){
+        /*for(let i=0; i<4; i++){
           this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
           if(this.contatos[i].nome != ''){
             alert('Enviando SMS para:' + this.contatos[i].nome);
           }
-        }
+        }*/
+        this.enviarSMS(this.contatos[0].telefone, mensagem+localizacao);
         //console.log(localizacao);
       }).catch((error) => {
           console.log('Erro ao conseguir localização: ', error);
@@ -93,7 +95,7 @@ export class AppComponent {
     }
   }
 
-  async enviarSMS(num:string, mensagem:string) { //G
+  enviarSMS(num:string, mensagem:string) { //G
     const sms = new SMS();
     const options = {
       replaceLineBreaks: true
@@ -137,9 +139,9 @@ export class AppComponent {
 
         if(this.moveCounter > 4) { //se detectar o shake, pelo menos 4 vezes
           console.log('SHAKE');
-          if(this.flagBotaoVolumeDown>0 || this.flagBotaoVolumeUp>0){
+          if(this.flagBotaoVolumeDown>=0 || this.flagBotaoVolumeUp>=0){
             this.enviaSMS(true);
-            this.callNumber.callNumber("190", true);
+            this.callNumber.callNumber("000", true);
             this.moveCounter=0; 
           }
         }
