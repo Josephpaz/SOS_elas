@@ -5,6 +5,7 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.Settings;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -25,6 +26,7 @@ public class AccessibilityButtonService extends AccessibilityService {
         public void run() {
             Log.d(TAG, "reset count");
             mCounter = 0;
+            GlobalVar.flagEmergencia = false; //flag
         }
     };
 
@@ -41,7 +43,9 @@ public class AccessibilityButtonService extends AccessibilityService {
             mCounter = 0;
             Log.d(TAG, "Sending SMS mensage for your contacts" + " - " + mCounter);
             Toast.makeText(getApplicationContext(), "Enviando SMS para seus contatos de emergência!", Toast.LENGTH_LONG).show();
-    }
+            //passando a flag pra outra activity
+            GlobalVar.flagEmergencia = true; //flag
+        }
 
         Log.d(TAG, "Counter" + " - " + mCounter);
     }

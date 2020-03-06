@@ -8,9 +8,10 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { Storage } from '@ionic/storage';
 import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 
-
-
+import { Plugins } from "@capacitor/core";
+const { callbackVolumeButton } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -26,7 +27,8 @@ export class AppComponent {
     private geolocation: Geolocation,
     private storage: Storage,
     private deviceMotion: DeviceMotion,
-    private callNumber: CallNumber
+    private callNumber: CallNumber,
+    private backgroundMode: BackgroundMode
   ) {
     this.initializeApp();
   }
@@ -41,13 +43,16 @@ export class AppComponent {
   lastZ:number;
   moveCounter:number = 0;
 
+  flagPanico: any;
+
   initializeApp() { //roda assim q o app é aberto G
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.backgroundMode.enable();
       this.detectaShake();
     });     
-      this.intervalButton = setInterval(()=> {this.enviaSMS(false)}, 2000); //2seg
+      this.intervalButton = setInterval(()=> {this.verificaPanico()}, 900);
       /*
       document.addEventListener('volumedownbutton', (event) => {
         console.log('Botao pressionado');
@@ -60,8 +65,17 @@ export class AppComponent {
       */
   }
 
-  enviaSMS(call:boolean){ //G
-    if((this.flagBotaoVolumeUp >= 1 || this.flagBotaoVolumeDown >= 1) || call == true){
+  verificaPanico(){
+    callbackVolumeButton.ehEmergencia().then((res) => {
+      console.log(res.flag);
+      this.flagPanico = res.flag;
+    });
+    if(this.flagPanico == true){
+      this.enviaSMS();
+    }
+  }
+
+  enviaSMS(){ //G
       console.log('Envia SMS OK');
       this.pegarContatos();
       let mensagem = 'Socorro, eu estou em uma situação de possível perigo! \n\n Minha localização:\n';
@@ -74,25 +88,17 @@ export class AppComponent {
         let precisao = Math.floor(position.coords.accuracy);
         
         localizacao += latitude + "," + longitude + '\n Precisão:' + precisao + ' metros';
-        /*for(let i=0; i<4; i++){
+        for(let i=0; i<4; i++){
           this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
           if(this.contatos[i].nome != ''){
-            alert('Enviando SMS para:' + this.contatos[i].nome);
+            //alert('Enviando SMS para:' + this.contatos[i].nome);
           }
-        }*/
-        this.enviarSMS(this.contatos[0].telefone, mensagem+localizacao);
+        }
+        //this.enviarSMS(this.contatos[0].telefone, mensagem+localizacao);
         //console.log(localizacao);
       }).catch((error) => {
           console.log('Erro ao conseguir localização: ', error);
       });
-      this.flagBotaoVolumeUp = 0;
-      this.flagBotaoVolumeDown = 0;
-    }else{
-      if(this.flagBotaoVolumeDown>0 && this.flagBotaoVolumeUp>0){
-        this.flagBotaoVolumeUp -= 1;
-        this.flagBotaoVolumeDown -= 1;
-      }
-    }
   }
 
   enviarSMS(num:string, mensagem:string) { //G
@@ -139,9 +145,8 @@ export class AppComponent {
 
         if(this.moveCounter > 4) { //se detectar o shake, pelo menos 4 vezes
           console.log('SHAKE');
-          if(this.flagBotaoVolumeDown>=0 || this.flagBotaoVolumeUp>=0){
-            this.enviaSMS(true);
-            this.callNumber.callNumber("000", true);
+          if(this.flagPanico == true){
+            this.callNumber.callNumber("190", true);
             this.moveCounter=0; 
           }
         }

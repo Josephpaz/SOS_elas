@@ -15,6 +15,7 @@ import { SMS } from '@ionic-native/sms/ngx';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { DeviceMotion } from '@ionic-native/device-motion/ngx';
+import { BackgroundMode } from '@ionic-native/background-mode/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -29,7 +30,8 @@ import { DeviceMotion } from '@ionic-native/device-motion/ngx';
     SMS,
     Geolocation,
     DeviceMotion,
-    IonicStorageModule
+    IonicStorageModule,
+    BackgroundMode,
   ],
   bootstrap: [AppComponent]
 })

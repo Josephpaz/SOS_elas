@@ -6,6 +6,13 @@
     <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber"/>
   </feature>
 
+  <feature name="BackgroundMode">
+    <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode"/>
+  </feature>
+  <feature name="BackgroundModeExt">
+    <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundModeExt"/>
+  </feature>
+
   <feature name="Contacts">
     <param name="android-package" value="org.apache.cordova.contacts.ContactManager"/>
   </feature>

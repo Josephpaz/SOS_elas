@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "resources": "cordova-res android && node scripts/resources.js"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +38,7 @@
     "call-number": "^1.0.1",
     "cordova-android": "^8.1.0",
     "cordova-android-support-gradle-release": "^3.0.1",
+    "cordova-plugin-background-mode": "^0.7.3",
     "cordova-plugin-contacts": "^3.0.1",
     "cordova-plugin-device-motion": "^2.0.1",
     "cordova-plugin-file": "^6.0.2",
