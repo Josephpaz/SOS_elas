@@ -1,3 +1,7 @@
+ion-content {
+  --background: white;
+}
+
 ion-content ion-toolbar {
   --background: #af5ca0;
 }
@@ -5,4 +9,50 @@ ion-content ion-toolbar {
 .toolbar{
   --background: #af5ca0;
   --color: white;
+}
+
+ion-slides {
+  height: 100vh !important;
+  width: 100vw;
+  
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  justify-items:  center;
+  align-content: center;
+  align-items: center;
+  padding: 1em;
+}
+
+.tituloGuia{
+  font-family: Averia Serif Libre;
+  font-style: bold italic;
+  font-size: 27px;
+  color: white;
+}
+
+.textoGuia{
+  font-family: Averia Serif Libre;
+  font-style: bold;
+  font-size: 24px;
+  color:white;
+}
+
+#slide01{
+  background-color: #F47464;
+}
+
+#slide02{
+  background-color:#BE59E1;
+}
+
+#slide03{
+  background-color:#F47464;
+}
+
+#slide04{
+  background-color: #BE59E1;
 }

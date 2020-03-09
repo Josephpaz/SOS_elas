@@ -7,20 +7,60 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <section class="sec1">
-    <ion-button (click) = "showModal1()" id="s1"> Violência Contra a Mulher</ion-button>
-  </section>
-  <section class="sec4">
-    <ion-button (click) = "showModal4()" id="s2"> Lei da 'Importunação Sexual'</ion-button>
-  </section>
-  <section class="sec2">
-    <ion-button (click) = "showModal2()" id="s3"> Lei Maria da Penha</ion-button>
-  </section>
-  <section class="sec3">
-    <ion-button (click) = "showModal3()" id="s4"> Lei do 'Feminicídio'</ion-button>
-  </section>
-  <section class="sec5">
-    <ion-button (click) = "showModal5()" id="s5"> Quebre o Silêncio e Procure Ajuda</ion-button>
-  </section>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card id="s2">
+          <ion-card-header>
+            <ion-card-title class="textCard">Violência Contra a Mulher</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button fill="solid" expand="block" (click) = "showModal1()" id="s2"> <p> saiba mais </p></ion-button>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card id="s1">
+          <ion-card-header>
+            <ion-card-title  class="textCard">Lei da 'Importunação Sexual'</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button fill="solid" expand="block" (click) = "showModal2()" id="s1"> <p> saiba mais </p></ion-button>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card id="s2">
+          <ion-card-header>
+            <ion-card-title  class="textCard">Lei Maria da Penha</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button fill="solid" expand="block" (click) = "showModal3()" id="s2"> <p> saiba mais </p></ion-button>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card id="s1">
+          <ion-card-header>
+            <ion-card-title  class="textCard">Lei do 'Feminicídio' </ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button fill="solid" expand="block" (click) = "showModal4()" id="s1"> <p> saiba mais </p></ion-button>
+          </ion-card-content>
+        </ion-card>
+        
+        <ion-card id="s2">
+          <ion-card-header>
+            <ion-card-title  class="textCard">Quebre o Silêncio e Procure Ajuda</ion-card-title>
+          </ion-card-header>
+        
+          <ion-card-content>
+            <ion-button fill="solid" expand="block" (click) = "showModal5()" id="s2"> <p> saiba mais </p></ion-button>
+          </ion-card-content>
+        </ion-card>      
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
 </ion-content>

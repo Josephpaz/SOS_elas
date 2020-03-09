@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
-import { ModalSMSComponent } from '../modal-sms/modal-sms.component';
-
 
 @NgModule({
   imports: [
@@ -16,9 +14,6 @@ import { ModalSMSComponent } from '../modal-sms/modal-sms.component';
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab1Page }])
   ],
-  
-  declarations: [Tab1Page, ModalSMSComponent],
-  entryComponents: [ModalSMSComponent]
-
+  declarations: [Tab1Page]
 })
 export class Tab1PageModule {}

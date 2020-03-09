@@ -9,19 +9,27 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
-import { SMS } from '@ionic-native/sms/ngx';
+import { Contacts } from '@ionic-native/contacts/ngx';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { SMS } from '@ionic-native/sms/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { IonicStorageModule } from '@ionic/storage';
+import { DeviceMotion } from '@ionic-native/device-motion/ngx';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot()],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Contacts, SMS, CallNumber
+    Contacts,
+    CallNumber,
+    SMS,
+    Geolocation,
+    DeviceMotion,
+    IonicStorageModule
   ],
   bootstrap: [AppComponent]
 })

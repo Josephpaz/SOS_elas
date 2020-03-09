@@ -1,11 +1,24 @@
 <ion-header>
   <ion-toolbar class="tool">
+    <ion-title class="text">'Feminicídio'.</ion-title>
     <ion-buttons slot="end">
-      <ion-button size= "small" (click)="close()" id="fechar">Fechar</ion-button>
+      <ion-button size= "small" (click)="close()" id="fechar">X</ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <img id="fundo" src="/assets/imagens/telaImportunacao.png" alt="fundo">
+<ion-content id="info1" >
+  <ion-row><h1 class="txtTitulo">Lei do 'Feminicídio'</h1></ion-row>
+  <ion-img src="../assets/infos/women.svg"></ion-img>
+  <ion-row class="txtCorpo">
+    <p>Lei 13.104/2015 altera o Código Penal prevendo o FEMINICÍDIO como circunstância
+      qualificadora do crime de homicídio e o inclui no rol dos crimes hediondos. O
+      feminicídio, então, passa a ser entendido como homicídio qualificado contra as mulheres
+      “por razões da condição de sexo feminino”.
+     </p>
+    <p id="p2">  O Atlas da Violência produzido pelo IPEA e pelo Fórum Brasileiro de Segurança Pública
+      (FBSP) concluiu que em 2016 – 4.645 mulheres foram assassinadas no país, o que representa
+      uma taxa de 4,5 homicídios para cada 100 mil brasileiras. Em dez anos de pesquisa, observou-se
+      um aumento de 6,4% no número de feminicídios.</p>
+  </ion-row>
 </ion-content>

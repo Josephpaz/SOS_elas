@@ -38,6 +38,16 @@ const routes: Routes = [
         ]
       },
       {
+        path: 'tab5',
+        children: [
+          {
+            path: '',
+            loadChildren: () =>
+              import('../tab5/tab5.module').then(m => m.Tab5PageModule)
+          }
+        ]
+      },
+      {
         path: 'tab4',
         children: [
           {
@@ -47,6 +57,7 @@ const routes: Routes = [
           }
         ]
       },
+      
       {
         path: '',
         redirectTo: '/tabs/tab1',
