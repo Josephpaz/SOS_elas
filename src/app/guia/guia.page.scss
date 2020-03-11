@@ -1,8 +1,24 @@
 
-ion-slides {
-  height: 100vh !important;
-  width: 100vw;
-  
+ion-slides{
+  width: 100vw; 
+  height: 100vh;
+}
+
+ion-slides{
+  overflow-y: scroll;
+}
+
+ion-slides .scroll-content{
+  overflow-y: auto !important;
+}
+
+.swiper-slide {
+  overflow-y: scroll;    
+  display: block;    
+}
+
+.btnContinuar{
+  width: 100%;
 }
 
 .flex-container {

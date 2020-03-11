@@ -4,6 +4,7 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "linuxAndroidStudioPath": "/snap/bin/android-studio",
   "cordova": {
     "preferences": {
       "ScrollEnabled": "false",
@@ -16,4 +17,5 @@
       "SplashScreenDelay": "3000"
     }
   }
+  
 }

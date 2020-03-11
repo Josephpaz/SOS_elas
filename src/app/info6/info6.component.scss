@@ -1,0 +1,68 @@
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.tool{
+    --background: #BE59E1;
+}
+
+.text{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    color: white;
+    justify-content: flex-start;
+}
+
+.txtTitulo{
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+    justify-content: center;
+}
+
+.txtCorpo{
+    flex-direction: column;
+    color:white;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    justify-content: center;
+    align-content: center;
+}
+
+#info1 {
+    --background:#F47464;
+    padding: 2em;
+}
+
+ion-button {
+    --color: #BE59E1;
+    --border-radius:50px;
+    --background: white;
+  }
+
+#p1{
+    flex-grow: 0;
+    flex-basis: 90%;
+    align-self: center;
+}
+
+#p2{
+    flex-grow: 0;
+    flex-basis: 50px;
+    align-self: flex-start;
+    padding-left: 1em;
+    padding-right: 5em;
+}
+
+#p3{
+    flex-grow: 0;
+    flex-basis: 50%;
+    align-self: flex-end;
+    padding-left: 5em;
+    padding-right: 1em;
+}
+
