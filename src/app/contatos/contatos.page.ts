@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Contacts, Contact, ContactField, ContactName } from '@ionic-native/contacts/ngx';
 import { ActivatedRoute, Router } from '@angular/router';
-//import { Storage } from '@ionic/storage';
 
 import { Plugins } from '@capacitor/core';
 const { Storage } = Plugins;
@@ -17,7 +16,7 @@ export class ContatosPage implements OnInit {
   data: any;
   searchTerm: string;
 
-  constructor(private contacts: Contacts, private route: ActivatedRoute, private router: Router, private storage: Storage) { 
+  constructor(private contacts: Contacts, private route: ActivatedRoute, private router: Router) { 
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.id = this.router.getCurrentNavigation().extras.state.id;
