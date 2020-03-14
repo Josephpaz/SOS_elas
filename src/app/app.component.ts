@@ -3,15 +3,6 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SMS, SmsOptions } from '@ionic-native/sms/ngx';
-import { CallNumber } from '@ionic-native/call-number/ngx';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { Storage } from '@ionic/storage';
-import { DeviceMotion, DeviceMotionAccelerationData } from '@ionic-native/device-motion/ngx';
-import { BackgroundMode } from '@ionic-native/background-mode/ngx';
-
-import { Plugins } from "@capacitor/core";
-const { callbackVolumeButton } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -23,141 +14,14 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private sms: SMS,
-    private geolocation: Geolocation,
-    private storage: Storage,
-    private deviceMotion: DeviceMotion,
-    private callNumber: CallNumber,
-    private backgroundMode: BackgroundMode
   ) {
     this.initializeApp();
   }
-
-  flagBotaoVolumeDown: number = 0;
-  flagBotaoVolumeUp: number = 0;
-  intervalButton: any;
-  contatos: any;
-
-  lastX:number;
-  lastY:number;
-  lastZ:number;
-  moveCounter:number = 0;
-
-  flagPanico: any;
 
   initializeApp() { //roda assim q o app é aberto G
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.backgroundMode.enable();
-      this.detectaShake();
     });     
-      this.intervalButton = setInterval(()=> {this.verificaPanico()}, 900);
-      /*
-      document.addEventListener('volumedownbutton', (event) => {
-        console.log('Botao pressionado');
-        this.flagBotaoVolumeDown += 1;
-      });
-      document.addEventListener('volumeupbutton', (event) => {
-        console.log('Botao pressionado');
-        this.flagBotaoVolumeUp += 1;
-      });
-      */
   }
-
-  verificaPanico(){
-    callbackVolumeButton.ehEmergencia().then((res) => {
-      console.log(res.flag);
-      this.flagPanico = res.flag;
-    });
-    if(this.flagPanico == true){
-      this.enviaSMS();
-    }
-  }
-
-  enviaSMS(){ //G
-      console.log('Envia SMS OK');
-      this.pegarContatos();
-      let mensagem = 'Socorro, eu estou em uma situação de possível perigo! \n\n Minha localização:\n';
-      let localizacao = 'https://www.google.com/maps/search/?api=1&query=';
-      const sms = new SMS();
-
-      this.geolocation.getCurrentPosition().then((position) => {
-        let latitude = position.coords.latitude;
-        let longitude = position.coords.longitude;
-        let precisao = Math.floor(position.coords.accuracy);
-        
-        localizacao += latitude + "," + longitude + '\n Precisão:' + precisao + ' metros';
-        for(let i=0; i<4; i++){
-          this.sleep(1000).then(() => { this.enviarSMS(this.contatos[i].telefone, mensagem+localizacao); }); //aguarda 1 seg entre o envio do sms para cada contato, evita sobrecarga
-          if(this.contatos[i].nome != ''){
-            //alert('Enviando SMS para:' + this.contatos[i].nome);
-          }
-        }
-        //this.enviarSMS(this.contatos[0].telefone, mensagem+localizacao);
-        //console.log(localizacao);
-      }).catch((error) => {
-          console.log('Erro ao conseguir localização: ', error);
-      });
-  }
-
-  enviarSMS(num:string, mensagem:string) { //G
-    const sms = new SMS();
-    const options = {
-      replaceLineBreaks: true
-    }
-    sms.send(num, mensagem, options);
-  }
-
-  //contatos
-  pegarContatos(){ //G
-    this.storage.get('Contatos').then((data) => {
-      this.contatos = data;
-      //console.log(this.contatos);
-    });
-  }
-
-  sleep(ms) { //G
-    return new Promise(resolve => setTimeout(resolve, ms));
-  }
-
-  detectaShake(){ //G
-      let subscription = this.deviceMotion.watchAcceleration({frequency:200}).subscribe(acc => { //listener para o shake
-        //console.log(acc);
-
-        if(!this.lastX) {
-          this.lastX = acc.x;
-          this.lastY = acc.y;
-          this.lastZ = acc.z;
-          return;
-        }
-        //pega o modulo e compara com o anterior
-        let deltaX:number, deltaY:number, deltaZ:number;
-        deltaX = Math.abs(acc.x-this.lastX);
-        deltaY = Math.abs(acc.y-this.lastY);
-        deltaZ = Math.abs(acc.z-this.lastZ);
-        //a diferença de velocidade deve ser maior que x
-        if(deltaX + deltaY + deltaZ > 10) {
-          this.moveCounter++;
-        } else {
-          this.moveCounter = Math.max(0, --this.moveCounter);
-        }
-
-        if(this.moveCounter > 4) { //se detectar o shake, pelo menos 4 vezes
-          console.log('SHAKE');
-          if(this.flagPanico == true){
-            this.callNumber.callNumber("190", true);
-            this.moveCounter=0; 
-          }
-        }
-
-        this.lastX = acc.x;
-        this.lastY = acc.y;
-        this.lastZ = acc.z;
-
-      });
-  }
-
-  //shake
-  
 }

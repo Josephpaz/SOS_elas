@@ -1,6 +1,6 @@
 {
   "appId": "sos.elas",
-  "appName": "SOSEl@s",
+  "appName": "SOSEl@as",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
@@ -17,5 +17,4 @@
       "SplashScreenDelay": "3000"
     }
   }
-  
 }

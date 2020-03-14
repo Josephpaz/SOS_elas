@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">SOSEl@s</string>
-    <string name="title_activity_main">SOSEl@s</string>
+    <string name="app_name">SOSEl@as</string>
+    <string name="title_activity_main">SOSEl@as</string>
     <string name="package_name">sos.elas</string>
     <string name="custom_url_scheme">sos.elas</string>
 </resources>

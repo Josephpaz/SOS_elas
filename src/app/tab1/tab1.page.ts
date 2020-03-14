@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { Storage } from '@ionic/storage';
 import { Router, NavigationExtras } from '@angular/router';
 
 import { AlertController } from '@ionic/angular';
 import { Platform } from '@ionic/angular';
 
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 
 @Component({
@@ -12,136 +13,69 @@ import { Platform } from '@ionic/angular';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
 })
+
 export class Tab1Page {
   data: any;
   interval: any;
  
   constructor(
-    private storage: Storage,
+    //private Storage: Storage,
     public alertController: AlertController,
     private platform: Platform,
     private route: Router
   ) {
-    this.data = {};
+    this.data = [
+      {
+        nome: "",
+        phoneNumber: ""
+      },
+      {
+        nome: "",
+        phoneNumber: ""
+      },
+      {
+        nome: "",
+        phoneNumber: ""
+      },
+      {
+        nome: "",
+        phoneNumber: ""
+      }
+    ];
   }
   
   ionViewWillEnter(){
     this.platform.ready().then(() => { //G
-      this.interval = setInterval(()=> {this.reloadPage()}, 1000); //0.1seg
-      //this.getFromContacts();
-      this.storage.get('Contatos').then((res) => {
-        if(res !== null){
-          console.log(res);
-          this.data.Contatos = res;
-        }else{
-          let contatosEmerg = [
-            {
-              nome: "",
-              telefone: ""
-            },
-            {
-              nome: "",
-              telefone: ""
-            },
-            {
-              nome: "",
-              telefone: ""
-            },
-            {
-              nome: "",
-              telefone: ""
-            }
-          ];
-       
-          //Set Object Value
-          this.setValue("Contatos", contatosEmerg);
-        }
-      },
-      (err) => {
-        console.log(err)
-      });
-    }); 
+      this.interval = setInterval(()=> {this.reloadData()}, 1000);});
   }
 
-  reloadPage(){ //solução temporaria, arrumar 
-    this.storage.get('Contatos').then((res) => {
-      if(res !== null){
-        console.log(res);
-        this.data.Contatos = res;
-      }else{
-        let contatosEmerg = [
-          {
-            nome: "",
-            telefone: ""
-          },
-          {
-            nome: "",
-            telefone: ""
-          },
-          {
-            nome: "",
-            telefone: ""
-          },
-          {
-            nome: "",
-            telefone: ""
-          }
-        ];
-     
-        //Set Object Value
-        this.setValue("Contatos", contatosEmerg);
-      }
-    },
-    (err) => {
-      console.log(err)
+  async reloadData(){
+    for(let i=0;i<4;i++){
+      console.log('Reload dos contatos.');
+      this.data[i].nome = await Storage.get({ key: 'nome' + i });
+      this.data[i].phoneNumber = await Storage.get({ key: 'phoneNumber' + i });
+    }
+    console.log(this.data);
+  }
+
+  async removeContato(id:number){ //G
+    console.log('Contato removido');
+    await Storage.remove({ key: 'nome' + id });
+    await Storage.remove({ key: 'phoneNumber' + id });
+  }
+
+  async addContato(tel:string, id:number, nome:string){ //G
+    await Storage.set({
+      key: 'nome' + id,
+      value: nome,
+    });
+    await Storage.set({
+      key: 'phoneNumber' + id,
+      value: tel,
     });
   }
 
-  //Retirado da internet
-  // set a key/value
-  setValue(key: string, value: any) {
-    this.storage.set(key, value).then((response) => {
-      console.log('set' + key + ' ', response);
- 
-      //get Value Saved in key
-      this.getValue(key);
- 
-    }).catch((error) => {
-      console.log('set error for ' + key + ' ', error);
-    });
-  }
- 
-  // get a key/value pair
-  getValue(key: string) {
-    this.storage.get(key).then((val) => {
-      console.log('get ' + key + ' ', val);
-      this.data[key] = "";
-      this.data[key] = val;
-    }).catch((error) => {
-      console.log('get error for ' + key + '', error);
-    });
-  }   
-  //FIM Retirado da internet
-
-  removeContato(key:string, id:number){ //G
-    this.storage.get(key).then((dados) => {
-      console.log(dados);
-      dados[id].nome = '';
-      dados[id].telefone = '';
-      this.setValue("Contatos", dados);
-    });
-  }
-
-  addContato(key:string, id:number, nome:string, telefone:string){ //G
-    this.storage.get(key).then((dados) => {
-      console.log(dados);
-      dados[id].nome = nome;
-      dados[id].telefone = telefone;
-      this.setValue("Contatos", dados);
-    });
-  }
-
-  async presentAlertPrompt(key:string, id:number) { //G
+  async presentAlertPrompt(id:number) { //G
     const alert = await this.alertController.create({
       header: 'Adicionar Contato',
       inputs: [
@@ -167,7 +101,7 @@ export class Tab1Page {
         }, {
           text: 'Ok',
           handler: data => {
-            this.addContato(key, id, data.nome, data.telefone);
+            this.addContato(data.telefone, id, data.nome);
             console.log('Confirm Ok');
           }
         }
