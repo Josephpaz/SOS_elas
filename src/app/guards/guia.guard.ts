@@ -6,8 +6,10 @@ import {
   Router, 
   UrlTree 
 } from '@angular/router';
-import { Observable } from 'rxjs';
-import { Storage } from '@ionic/storage'
+
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
+
 
 //importei Router
 
@@ -18,18 +20,21 @@ export class GuiaGuard implements CanActivate {
 
   //coloquei construtor com 2 parametros e mudei canActivate para async
 
-  constructor(private storage: Storage, private router: Router) {}
+  constructor(private router: Router) {}
    async canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean>{
 
       //função para dizer se usuário completou tutorial
-      const isComplete = await this.storage.get('guiaComplete')
+      let isComplete = await Storage.get({ key: 'guiaComplete' });
 
-      if (!isComplete) {
-        this.router.navigateByUrl('/guia')
+      if (isComplete.value != 'true') {
+        this.router.navigateByUrl('/guia');
+        return false;
+      }else{
+        return true;
       }
-      return isComplete;
+      //return isComplete;
   }
   
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Storage } from '@ionic/storage'
 import { Router } from '@angular/router'
 import { IonSlides } from '@ionic/angular'
+
+import { Plugins } from '@capacitor/core';
+const { Storage } = Plugins;
 
 
 @Component({
@@ -11,12 +13,15 @@ import { IonSlides } from '@ionic/angular'
 })
 export class GuiaPage implements OnInit {
 
-  constructor(private storage: Storage, private router: Router ) { }
+  constructor(private router: Router ) { }
 
   @ViewChild(IonSlides, { static: false }) slides: IonSlides;
 
   async finish() {
-    await this.storage.set('guiaComplete',true);
+    await Storage.set({
+      key: 'guiaComplete',
+      value: 'true',
+    });
     this.router.navigateByUrl('/');
   }
 

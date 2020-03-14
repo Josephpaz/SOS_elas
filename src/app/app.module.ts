@@ -21,8 +21,7 @@ import { Contacts } from '@ionic-native/contacts/ngx';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    Contacts,
-    Storage
+    Contacts
   ],
   bootstrap: [AppComponent]
 })
