@@ -10,9 +10,10 @@ import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.IBinder;
+import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import androidx.core.app.NotificationCompat;
+//import androidx.core.app.NotificationCompat;
 
 public class ListenBroadCastService extends Service {
 

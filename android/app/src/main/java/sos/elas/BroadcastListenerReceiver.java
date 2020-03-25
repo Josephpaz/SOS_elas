@@ -11,11 +11,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
+//import com.google.android.gms.location.FusedLocationProviderClient;
+//import com.google.android.gms.location.LocationCallback;
+//import com.google.android.gms.location.LocationRequest;
+//import com.google.android.gms.location.LocationResult;
+//import com.google.android.gms.location.LocationServices;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,8 +38,8 @@ public class BroadcastListenerReceiver extends BroadcastReceiver {
         }
     };
 
-    private FusedLocationProviderClient client;
-    private LocationRequest locationRequest;
+//    private FusedLocationProviderClient client;
+//    private LocationRequest locationRequest;
 
     Context mContext;
 
@@ -47,13 +47,13 @@ public class BroadcastListenerReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         mContext = context;
 
-        if(client == null || locationRequest == null){
-            client = LocationServices.getFusedLocationProviderClient(context);
-            locationRequest = LocationRequest.create();
-            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-            locationRequest.setInterval(0);
-            locationRequest.setFastestInterval(0);
-        }
+//        if(client == null || locationRequest == null){
+//            client = LocationServices.getFusedLocationProviderClient(context);
+//            locationRequest = LocationRequest.create();
+//            locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+//            locationRequest.setInterval(0);
+//            locationRequest.setFastestInterval(0);
+//        }
 
         if (mCounter == 0){
             Log.d(TAG, "start  count");
@@ -68,31 +68,31 @@ public class BroadcastListenerReceiver extends BroadcastReceiver {
             Log.d(TAG, "sending message");
             Toast.makeText(context, "Sending SMS mensage for your contacts", Toast.LENGTH_LONG).show();
             sendSMSMessage();
-            getLastKnownLocation();
+//            getLastKnownLocation();
         }
 
         Log.d(TAG, intent.getAction() + " - " + mCounter);
     }
 
-    private final LocationCallback locationCallback = new LocationCallback() {
+//    private final LocationCallback locationCallback = new LocationCallback() {
+//
+//        @Override
+//        public void onLocationResult(LocationResult locationResult) {
+//            Log.d(TAG, "onLocationResult()");
+//            List<Location> locationList = locationResult.getLocations();
+//            if (locationList.size() != 0) {
+//                Location location = locationList.get(0);
+//                Log.e("AppLocationService", "Latitude  - " +location.getLatitude()+", longitude  - " +location.getLongitude() );
+//                sendSMSMessage(location.getLatitude(), location.getLongitude());
+//            }
+//        }
+//    };
 
-        @Override
-        public void onLocationResult(LocationResult locationResult) {
-            Log.d(TAG, "onLocationResult()");
-            List<Location> locationList = locationResult.getLocations();
-            if (locationList.size() != 0) {
-                Location location = locationList.get(0);
-                Log.e("AppLocationService", "Latitude  - " +location.getLatitude()+", longitude  - " +location.getLongitude() );
-                sendSMSMessage(location.getLatitude(), location.getLongitude());
-            }
-        }
-    };
 
-
-    private void getLastKnownLocation(){
-        client.requestLocationUpdates(locationRequest, locationCallback, null);
-        //client.removeLocationUpdates(locationCallback);
-    }
+//    private void getLastKnownLocation(){
+//        client.requestLocationUpdates(locationRequest, locationCallback, null);
+//        //client.removeLocationUpdates(locationCallback);
+//    }
 
 
     private void sendSMSMessage(double lat, double lng){
@@ -101,7 +101,7 @@ public class BroadcastListenerReceiver extends BroadcastReceiver {
         for (String contact: contacts) {
             smsManager.sendTextMessage(contact, null, "https://www.google.com/maps/?q="+lat+","+lng, null, null);
         }
-        client.removeLocationUpdates(locationCallback);
+//        client.removeLocationUpdates(locationCallback);
     }
 
     private void sendSMSMessage(){
